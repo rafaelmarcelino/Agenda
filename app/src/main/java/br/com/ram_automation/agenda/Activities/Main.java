@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,12 +19,12 @@ import java.util.List;
 
 import br.com.ram_automation.agenda.R;
 
-public class Main extends Activity {
+public class Main extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        setTitle("Lista de Alunos");
         List<String> alunos = new ArrayList<>();
         alunos.add("Rafael");
         alunos.add("Carmem");
