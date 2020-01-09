@@ -1,5 +1,7 @@
 package br.com.ram_automation.agenda.Model;
 
+import androidx.annotation.NonNull;
+
 public class Aluno {
     private final String nomeAluno;
     private final String telefoneAluno;
@@ -11,15 +13,9 @@ public class Aluno {
         this.emailAluno = emailAluno;
     }
 
-    public String getNomeAluno() {
-        return nomeAluno;
-    }
-
-    public String getTelefoneAluno() {
-        return telefoneAluno;
-    }
-
-    public String getEmailAluno() {
-        return emailAluno;
+    @NonNull
+    @Override
+    public String toString() {
+        return this.nomeAluno;
     }
 }
