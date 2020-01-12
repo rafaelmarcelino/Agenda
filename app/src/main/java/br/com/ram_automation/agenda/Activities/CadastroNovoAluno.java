@@ -22,30 +22,41 @@ public class CadastroNovoAluno extends AppCompatActivity {
     Button btnSalvarAluno;
 
     AlunoDAO alunoDAO = new AlunoDAO();
+
+    String _nomeAluno;
+    String _telefoneAluno;
+    String _emailAluno ;
+    Boolean _sexoAluno = true;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_novo_aluno);
         initializeVariables();
 
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                switch (radioGroup.getCheckedRadioButtonId()){
+                    case R.id.activity_cadastrar_aluno_gen_masc:
+                        _sexoAluno = true;
+                        break;
+                    case R.id.activity_cadastrar_aluno_gen_fem:
+                        _sexoAluno = false;
+                        break;
+                }
+
+            }
+        });
+
         btnSalvarAluno.setOnClickListener(new View.OnClickListener() {
-            String _nomeAluno = etNomeAluno.getText().toString();
-            String _telefoneAluno = etTelefoneAluno.getText().toString();
-            String _emailAluno = etEmailAluno.getText().toString();
-            Boolean _sexoAluno = false;
 
             @Override
             public void onClick(View v) {
-                radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(RadioGroup group, int checkedId) {
-                        switch (group.getCheckedRadioButtonId()){
-                            case R.id.activity_cadastrar_aluno_gen_masc:
-                                _sexoAluno = true;
-                                break;
-                        }
-                    }
-                });
+                _nomeAluno = etNomeAluno.getText().toString();
+                _telefoneAluno = etTelefoneAluno.getText().toString();
+                _emailAluno = etEmailAluno.getText().toString();
 
                 Aluno aluno = new Aluno(_nomeAluno, _telefoneAluno, _emailAluno, _sexoAluno);
 

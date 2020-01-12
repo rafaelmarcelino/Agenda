@@ -1,7 +1,12 @@
 package br.com.ram_automation.agenda.Adapters;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +14,8 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
 
 import java.util.List;
 
@@ -54,6 +61,7 @@ public class CustomBaseAdapter extends BaseAdapter {
         return inflate;
     }
 
+    @SuppressLint("ResourceAsColor")
     private void fillFieldsOfView(View inflate, int position) {
         ImageView imageView = inflate.findViewById(R.id.lv_image);
         TextView textViewNome = inflate.findViewById(R.id.lv_nome);
@@ -61,17 +69,18 @@ public class CustomBaseAdapter extends BaseAdapter {
         TextView textViewEmail = inflate.findViewById(R.id.lv_email);
 
         Aluno aluno = totalAlunos.get(position);
-
+        int color;
         if (aluno.getSexoAluno()) {
             imageView.setImageResource(ic_man);
+            color = Color.parseColor("#008577");
         }else {
             imageView.setImageResource(ic_woman);
+            color = Color.parseColor("#D81B60");
         }
 
+        imageView.setColorFilter(color);
         textViewNome.setText(aluno.getNomeAluno());
         textViewTelefone.setText(aluno.getTelefoneAluno());
         textViewEmail.setText(aluno.getEmailAluno());
-
-
     }
 }

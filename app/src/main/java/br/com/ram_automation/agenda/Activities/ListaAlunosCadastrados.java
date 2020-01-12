@@ -28,7 +28,8 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
 
         List<Aluno> alunos = alunoDAO.getAll();
 
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos,this);
 
-        lv_alunos.setAdapter(new CustomBaseAdapter(alunos,this));
+        lv_alunos.setAdapter(customBaseAdapter);
     }
 }
