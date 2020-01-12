@@ -1,45 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="8dp"
-    tools:context=".Activities.CadastroNovoAluno">
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="8dp"
+        tools:context=".Activities.CadastroNovoAluno">
 
-    <EditText
-        android:id="@+id/activity_cadastrar_aluno_nome"
-        android:hint="Nome do aluno"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textCapWords">
-    </EditText>
-    <EditText
-        android:id="@+id/activity_cadastrar_aluno_telefone"
-        android:hint="Telefone do aluno"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="phone">
-    </EditText>
-    <EditText
-        android:id="@+id/activity_cadastrar_aluno_email"
-        android:hint="Email do aluno"
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textEmailAddress">
-    </EditText>
+        <EditText
+            android:id="@+id/activity_cadastrar_aluno_nome"
+            android:hint="Nome do aluno"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords">
+        </EditText>
+        <EditText
+            android:id="@+id/activity_cadastrar_aluno_telefone"
+            android:hint="Telefone do aluno"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="phone">
+        </EditText>
+        <EditText
+            android:id="@+id/activity_cadastrar_aluno_email"
+            android:hint="Email do aluno"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress">
+        </EditText>
 
-    <Button
-        android:id="@+id/activity_cadastrar_aluno_btn_salvar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Salvar"
-        android:textAlignment="center">
-    </Button>
+        <RadioGroup
+            android:id="@+id/activity_cadastrar_aluno_radioGroup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp">
+            <RadioButton
+                android:id="@+id/activity_cadastrar_aluno_gen_masc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Masculino">
+            </RadioButton>
+            <RadioButton
+                android:id="@+id/activity_cadastrar_aluno_gen_fem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:text="Feminino">
+            </RadioButton>
+        </RadioGroup>
 
-</LinearLayout>
+
+
+        <Button
+            android:id="@+id/activity_cadastrar_aluno_btn_salvar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Salvar"
+            android:textAlignment="center">
+        </Button>
+
+    </LinearLayout>

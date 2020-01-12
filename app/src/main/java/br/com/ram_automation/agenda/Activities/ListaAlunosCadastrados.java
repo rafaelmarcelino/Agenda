@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.ram_automation.agenda.Adapters.CustomBaseAdapter;
 import br.com.ram_automation.agenda.DAO.AlunoDAO;
 import br.com.ram_automation.agenda.Model.Aluno;
 import br.com.ram_automation.agenda.R;
@@ -27,6 +28,7 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
 
         List<Aluno> alunos = alunoDAO.getAll();
 
-        lv_alunos.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,alunos));
+
+        lv_alunos.setAdapter(new CustomBaseAdapter(alunos,this));
     }
 }
