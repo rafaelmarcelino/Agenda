@@ -13,6 +13,6 @@ public class AlunoDAO {
     }
 
     public List<Aluno> getAll() {
-        return alunos;
+        return new ArrayList<>(alunos);
     }
 }
