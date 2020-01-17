@@ -2,7 +2,11 @@ package br.com.ram_automation.agenda.Model;
 
 import androidx.annotation.NonNull;
 
-public class Aluno {
+import java.io.Serializable;
+
+public class Aluno implements Serializable {
+    private Long id;
+    private Integer position;
     private final String nomeAluno;
     private final String telefoneAluno;
     private final String emailAluno;
@@ -13,6 +17,14 @@ public class Aluno {
         this.telefoneAluno = telefoneAluno;
         this.emailAluno = emailAluno;
         this.sexoAluno = sexoAluno;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Integer getPosition() {
+        return position;
     }
 
     public String getNomeAluno() {
@@ -29,6 +41,14 @@ public class Aluno {
 
     public Boolean getSexoAluno() {
         return sexoAluno;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setPosition(Integer position) {
+        this.position = position;
     }
 
     @NonNull

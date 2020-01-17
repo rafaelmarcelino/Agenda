@@ -6,12 +6,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.io.Serializable;
 import java.security.PrivateKey;
 import java.util.List;
 
@@ -22,6 +24,7 @@ import br.com.ram_automation.agenda.R;
 
 public class ListaAlunosCadastrados extends AppCompatActivity {
     public static final String TITULO_APPBAR = "Lista de Alunos";
+    public static final String TAG_INTENT_DADOS = "DadosAluno";
     private AlunoDAO alunoDAO = new AlunoDAO();
     private ListView lv_alunos;
     private FloatingActionButton floatingActionButton;
@@ -61,7 +64,7 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
     }
 
     private void defineListaAlunos() {
-        List<Aluno> alunos = alunoDAO.getAll();
+        final List<Aluno> alunos = alunoDAO.getAll();
 
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos,this);
 
@@ -70,7 +73,11 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
         lv_alunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.w("Position", "onItemClick: " + position,null );
+                Aluno alunoColetado = alunos.get(position);
+                Intent intent = new Intent(ListaAlunosCadastrados.this, CadastroNovoAluno.class);
+                intent.putExtra(TAG_INTENT_DADOS,alunoColetado);
+
+                startActivity(intent);
             }
         });
     }

@@ -9,6 +9,14 @@ public class AlunoDAO {
     private static final List<Aluno> alunos = new ArrayList<>();
 
     public void salva(Aluno aluno) {
+        int size = alunos.size();
+        if (size <=0){
+            aluno.setId(Long.valueOf(0));
+        }else {
+            aluno.setId(Long.valueOf(size));
+        }
+
+        aluno.setPosition(size + 1);
         alunos.add(aluno);
     }
 
