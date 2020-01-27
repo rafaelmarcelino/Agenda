@@ -10,8 +10,6 @@ import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.Serializable;
-
 import br.com.ram_automation.agenda.DAO.AlunoDAO;
 import br.com.ram_automation.agenda.Model.Aluno;
 import br.com.ram_automation.agenda.R;
@@ -30,7 +28,7 @@ public class CadastroNovoAluno extends AppCompatActivity {
     public static final String TAG_INTENT_DADOS = "DadosAluno";
     private final AlunoDAO alunoDAO = new AlunoDAO();
 
-    private  Aluno alunoColetado;
+    private Aluno alunoColetado;
     private String _nomeAluno;
     private String _telefoneAluno;
     private String _emailAluno;
@@ -66,17 +64,9 @@ public class CadastroNovoAluno extends AppCompatActivity {
 
     private void behaviorActivity() {
 
-        if (_intent.getSerializableExtra(TAG_INTENT_DADOS)!= null) {
+        if (_intent.getSerializableExtra(TAG_INTENT_DADOS) != null) {
             alunoColetado = (Aluno) _intent.getSerializableExtra(TAG_INTENT_DADOS);
-            etNomeAluno.setText(alunoColetado.getNomeAluno());
-            etTelefoneAluno.setText(alunoColetado.getTelefoneAluno());
-            etEmailAluno.setText(alunoColetado.getEmailAluno());
-
-            if (alunoColetado.getSexoAluno()){
-                radioButtonMasc.setChecked(true);
-            }else{
-                radioButtonFem.setChecked(true);
-            }
+            recuperaDadosAlunoColetado();
         }
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -90,17 +80,46 @@ public class CadastroNovoAluno extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                Aluno aluno = criaAluno();
-                salvaAluno(aluno);
-
+                if (alunoColetado == null) {
+                    Aluno aluno = criaNovoAluno();
+                    salvaAluno(aluno);
+                }else {
+                    atualizaDadosAlunoColetado();
+                    atualizaAluno(alunoColetado);
+                }
             }
         });
 
 
     }
 
-    private void coletaAluno(Aluno alunoColetado) {
+    private void atualizaDadosAlunoColetado() {
+        _nomeAluno = etNomeAluno.getText().toString();
+        _telefoneAluno = etTelefoneAluno.getText().toString();
+        _emailAluno = etEmailAluno.getText().toString();
 
+        alunoColetado.setNomeAluno(_nomeAluno);
+        alunoColetado.setTelefoneAluno(_telefoneAluno);
+        alunoColetado.setEmailAluno(_emailAluno);
+        alunoColetado.setSexoAluno(_sexoAluno);
+
+    }
+
+    private void recuperaDadosAlunoColetado() {
+        etNomeAluno.setText(alunoColetado.getNomeAluno());
+        etTelefoneAluno.setText(alunoColetado.getTelefoneAluno());
+        etEmailAluno.setText(alunoColetado.getEmailAluno());
+
+        if (alunoColetado.getSexoAluno()) {
+            radioButtonMasc.setChecked(true);
+        } else {
+            radioButtonFem.setChecked(true);
+        }
+    }
+
+    private void atualizaAluno(Aluno alunoColetado) {
+        alunoDAO.atualiza(alunoColetado);
+        finish();
     }
 
     private void salvaAluno(Aluno aluno) {
@@ -108,7 +127,7 @@ public class CadastroNovoAluno extends AppCompatActivity {
         finish();
     }
 
-    private Aluno criaAluno() {
+    private Aluno criaNovoAluno() {
         _nomeAluno = etNomeAluno.getText().toString();
         _telefoneAluno = etTelefoneAluno.getText().toString();
         _emailAluno = etEmailAluno.getText().toString();

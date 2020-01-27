@@ -2,19 +2,15 @@ package br.com.ram_automation.agenda.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
-import java.io.Serializable;
-import java.security.PrivateKey;
 import java.util.List;
 
 import br.com.ram_automation.agenda.Adapters.CustomBaseAdapter;
@@ -66,7 +62,7 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
     private void defineListaAlunos() {
         final List<Aluno> alunos = alunoDAO.getAll();
 
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos,this);
+        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos, this);
 
         lv_alunos.setAdapter(customBaseAdapter);
 
@@ -75,7 +71,7 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Aluno alunoColetado = alunos.get(position);
                 Intent intent = new Intent(ListaAlunosCadastrados.this, CadastroNovoAluno.class);
-                intent.putExtra(TAG_INTENT_DADOS,alunoColetado);
+                intent.putExtra(TAG_INTENT_DADOS, alunoColetado);
 
                 startActivity(intent);
             }
