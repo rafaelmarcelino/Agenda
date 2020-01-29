@@ -5,12 +5,12 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 
 public class Aluno implements Serializable {
-    private Long id;
-    private Integer position;
+    private long id;
+    private int position;
     private String nomeAluno;
     private String telefoneAluno;
     private String emailAluno;
-    private Boolean sexoAluno;
+    private boolean sexoAluno;
 
     public Aluno(String nomeAluno, String telefoneAluno, String emailAluno, Boolean sexoAluno) {
         this.nomeAluno = nomeAluno;
@@ -35,11 +35,11 @@ public class Aluno implements Serializable {
         this.sexoAluno = sexoAluno;
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public Integer getPosition() {
+    public int getPosition() {
         return position;
     }
 
@@ -55,7 +55,7 @@ public class Aluno implements Serializable {
         return emailAluno;
     }
 
-    public Boolean getSexoAluno() {
+    public boolean getSexoAluno() {
         return sexoAluno;
     }
 

@@ -15,7 +15,8 @@ import br.com.ram_automation.agenda.Model.Aluno;
 import br.com.ram_automation.agenda.R;
 
 public class CadastroNovoAluno extends AppCompatActivity {
-    public static final String TITULO_APPBAR = "Novo Aluno";
+    private static final String TITULO_APPBAR_NOVO_ALUNO = "Novo Aluno";
+    private static final String TITULO_APPBAR_EDITA_ALUNO = "Edita Aluno";
     private EditText etNomeAluno;
     private EditText etTelefoneAluno;
     private EditText etEmailAluno;
@@ -39,7 +40,6 @@ public class CadastroNovoAluno extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_novo_aluno);
-        setTitle(TITULO_APPBAR);
         initializeVariables();
     }
 
@@ -61,10 +61,12 @@ public class CadastroNovoAluno extends AppCompatActivity {
         btnSalvarAluno = findViewById(R.id.activity_cadastrar_aluno_btn_salvar);
     }
 
-
     private void behaviorActivity() {
 
-        if (_intent.getSerializableExtra(TAG_INTENT_DADOS) != null) {
+        if (!_intent.hasExtra(TAG_INTENT_DADOS)){
+            setTitle(TITULO_APPBAR_NOVO_ALUNO);
+        }else{
+            setTitle(TITULO_APPBAR_EDITA_ALUNO);
             alunoColetado = (Aluno) _intent.getSerializableExtra(TAG_INTENT_DADOS);
             recuperaDadosAlunoColetado();
         }
@@ -118,12 +120,12 @@ public class CadastroNovoAluno extends AppCompatActivity {
     }
 
     private void atualizaAluno(Aluno alunoColetado) {
-        alunoDAO.atualiza(alunoColetado);
+        alunoDAO.atualizaAluno(alunoColetado);
         finish();
     }
 
     private void salvaAluno(Aluno aluno) {
-        alunoDAO.salva(aluno);
+        alunoDAO.salvaAluno(aluno);
         finish();
     }
 

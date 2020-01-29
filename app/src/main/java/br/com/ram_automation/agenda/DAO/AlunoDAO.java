@@ -9,7 +9,7 @@ public class AlunoDAO {
     private static final List<Aluno> alunos = new ArrayList<>();
     private static Long idIncrement = Long.valueOf(0);
 
-    public void salva(Aluno aluno) {
+    public void salvaAluno(Aluno aluno) {
         aluno.setId(idIncrement);
         idIncrement++;
         aluno.setPosition(alunos.size());
@@ -17,15 +17,24 @@ public class AlunoDAO {
 
     }
 
-    public List<Aluno> getAll() {
+    public List<Aluno> buscaTodosAlunos() {
         return new ArrayList<>(alunos);
     }
 
-    public void atualiza(Aluno alunoColetado) {
+    public void atualizaAluno(Aluno alunoColetado) {
         for (Aluno alunoRequisitado : alunos) {
-            if (alunoColetado.getId().longValue() ==  alunoRequisitado.getId().longValue()) {
+            if (alunoColetado.getId() ==  alunoRequisitado.getId()) {
                 alunos.set(alunoRequisitado.getPosition(),alunoColetado);
             }
+        }
+    }
+
+    public void removeAluno(Aluno alunoColetado){
+        for (Aluno alunoAlvo:alunos) {
+            if (alunoAlvo.getId()== alunoColetado.getId()){
+                alunos.remove(alunoAlvo.getPosition());
+            }
+
         }
     }
 }

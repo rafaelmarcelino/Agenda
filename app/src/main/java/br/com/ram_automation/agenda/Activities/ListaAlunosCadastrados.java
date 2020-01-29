@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,7 +61,7 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
     }
 
     private void defineListaAlunos() {
-        final List<Aluno> alunos = alunoDAO.getAll();
+        final List<Aluno> alunos = alunoDAO.buscaTodosAlunos();
 
         CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos, this);
 
@@ -69,11 +70,21 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
         lv_alunos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Aluno alunoColetado = alunos.get(position);
+                Aluno alunoColetado = (Aluno) parent.getItemAtPosition(position);
                 Intent intent = new Intent(ListaAlunosCadastrados.this, CadastroNovoAluno.class);
                 intent.putExtra(TAG_INTENT_DADOS, alunoColetado);
 
                 startActivity(intent);
+            }
+        });
+
+        lv_alunos.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Aluno alunoColetado = (Aluno) parent.getItemAtPosition(position);
+                Toast.makeText(ListaAlunosCadastrados.this, "pos = "+alunoColetado.getPosition(), Toast.LENGTH_SHORT).show();
+                alunoDAO.removeAluno(alunoColetado);
+                return true;
             }
         });
     }
