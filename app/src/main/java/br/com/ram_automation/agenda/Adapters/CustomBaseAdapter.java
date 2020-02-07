@@ -28,7 +28,7 @@ import static br.com.ram_automation.agenda.R.drawable.ic_woman;
 public class CustomBaseAdapter extends BaseAdapter {
 
 
-    private final List<Aluno> totalAlunos;
+    private final List <Aluno> totalAlunos;
     private final Context context;
 
     public CustomBaseAdapter(List<Aluno> alunos, Context context) {
@@ -49,6 +49,11 @@ public class CustomBaseAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
         return 0;
+    }
+
+    public void updateList(List<Aluno> alunos){
+        this.totalAlunos.retainAll(alunos);
+        notifyDataSetChanged();
     }
 
     @Override

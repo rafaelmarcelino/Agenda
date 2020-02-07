@@ -63,7 +63,7 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
     private void defineListaAlunos() {
         final List<Aluno> alunos = alunoDAO.buscaTodosAlunos();
 
-        CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos, this);
+        final CustomBaseAdapter customBaseAdapter = new CustomBaseAdapter(alunos, this);
 
         lv_alunos.setAdapter(customBaseAdapter);
 
@@ -82,8 +82,10 @@ public class ListaAlunosCadastrados extends AppCompatActivity {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Aluno alunoColetado = (Aluno) parent.getItemAtPosition(position);
-                Toast.makeText(ListaAlunosCadastrados.this, "pos = "+alunoColetado.getPosition(), Toast.LENGTH_SHORT).show();
                 alunoDAO.removeAluno(alunoColetado);
+                alunos.clear();
+                alunos.addAll(alunoDAO.buscaTodosAlunos());
+                customBaseAdapter.updateList(alunos);
                 return true;
             }
         });

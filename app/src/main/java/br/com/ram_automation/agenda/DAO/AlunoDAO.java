@@ -6,7 +6,7 @@ import java.util.List;
 import br.com.ram_automation.agenda.Model.Aluno;
 
 public class AlunoDAO {
-    private static final List<Aluno> alunos = new ArrayList<>();
+    private static final  List<Aluno> alunos = new ArrayList<>();
     private static Long idIncrement = Long.valueOf(0);
 
     public void salvaAluno(Aluno aluno) {
@@ -30,11 +30,14 @@ public class AlunoDAO {
     }
 
     public void removeAluno(Aluno alunoColetado){
+        int position = -1;
         for (Aluno alunoAlvo:alunos) {
             if (alunoAlvo.getId()== alunoColetado.getId()){
-                alunos.remove(alunoAlvo.getPosition());
+                position = alunoAlvo.getPosition();
             }
-
+        }
+        if(position >= 0) {
+            alunos.remove(position);
         }
     }
 }
