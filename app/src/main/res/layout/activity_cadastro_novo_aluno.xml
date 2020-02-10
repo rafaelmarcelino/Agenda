@@ -6,11 +6,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:padding="8dp"
-        tools:context=".Activities.CadastroNovoAluno">
+        tools:context=".Activities.StoreNewStudent">
 
         <EditText
             android:id="@+id/activity_cadastrar_aluno_nome"
-            android:hint="Nome do aluno"
+            android:hint="Nome do student"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         </EditText>
         <EditText
             android:id="@+id/activity_cadastrar_aluno_telefone"
-            android:hint="Telefone do aluno"
+            android:hint="Telefone do student"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         </EditText>
         <EditText
             android:id="@+id/activity_cadastrar_aluno_email"
-            android:hint="Email do aluno"
+            android:hint="Email do student"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
