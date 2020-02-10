@@ -41,7 +41,7 @@ public class CustomBaseAdapter extends BaseAdapter {
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return this.totalStudents.get(position).getId();
     }
 
     @Override
@@ -75,5 +75,15 @@ public class CustomBaseAdapter extends BaseAdapter {
         textViewNome.setText(student.getNameStudent());
         textViewTelefone.setText(student.getTelephoneStudent());
         textViewEmail.setText(student.getEmailStudent());
+    }
+
+    public int getPosition(List<Student> students,Student student){
+        int studentFoundAtIndex = -1;
+        for (int i = 0; i < students.size(); i++) {
+            if (student.getId() == students.get(i).getId()) {
+                studentFoundAtIndex = i;
+            }
+        }
+        return studentFoundAtIndex;
     }
 }
