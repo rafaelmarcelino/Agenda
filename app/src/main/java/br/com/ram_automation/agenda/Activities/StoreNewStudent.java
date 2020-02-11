@@ -91,7 +91,7 @@ public class StoreNewStudent extends AppCompatActivity {
                     Student student = createNewStudent();
                     storeStudent(student);
                 }else {
-                    updateDataOfColectedStudent();
+                    updateDataOfCollectedStudent();
                     updateStudent(studentCollected);
                 }
             }
@@ -100,7 +100,7 @@ public class StoreNewStudent extends AppCompatActivity {
 
     }
 
-    private void updateDataOfColectedStudent() {
+    private void updateDataOfCollectedStudent() {
         _nameStudent = etNameStudent.getText().toString();
         _telephoneStudent = etTelephoneStudent.getText().toString();
         _emailStudent = etEmaiStudent.getText().toString();

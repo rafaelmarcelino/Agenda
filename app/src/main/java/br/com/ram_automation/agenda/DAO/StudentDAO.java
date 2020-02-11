@@ -16,11 +16,11 @@ public class StudentDAO {
 
     }
 
-    public void updateStudent(Student studentColected, int position) {
+    public void updateStudent(Student studentCollected, int position) {
         for (Student requestedStudent : students) {
-            if (studentColected.getId() ==  requestedStudent.getId()) {
+            if (studentCollected.getId() ==  requestedStudent.getId()) {
                 if(position >= 0){
-                    students.set(position, studentColected);
+                    students.set(position, studentCollected);
                 }
             }
         }

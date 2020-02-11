@@ -77,13 +77,4 @@ public class CustomBaseAdapter extends BaseAdapter {
         textViewEmail.setText(student.getEmailStudent());
     }
 
-    public int getPosition(List<Student> students,Student student){
-        int studentFoundAtIndex = -1;
-        for (int i = 0; i < students.size(); i++) {
-            if (student.getId() == students.get(i).getId()) {
-                studentFoundAtIndex = i;
-            }
-        }
-        return studentFoundAtIndex;
-    }
 }

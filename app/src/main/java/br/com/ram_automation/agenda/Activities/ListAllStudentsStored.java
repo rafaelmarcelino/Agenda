@@ -26,7 +26,6 @@ public class ListAllStudentsStored extends AppCompatActivity {
     private static final String TITLE_APPBAR = "Lista de Alunos";
     private static final String TAG_INTENT_DATA = "DadosAluno";
     private static final String POSITION_TO_UPDATE = "position";
-    public static final String TITLE_FOR_CONTEX_MENU = "Remover";
 
     private FloatingActionButton floatingActionButton;
     private ListView lvStudents;
@@ -132,8 +131,8 @@ public class ListAllStudentsStored extends AppCompatActivity {
         lvStudents.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Student studentColetado = (Student) parent.getItemAtPosition(position);
-                startActitvityToUpdateStudent(position, studentColetado);
+                Student studentCollected = (Student) parent.getItemAtPosition(position);
+                startActitvityToUpdateStudent(position, studentCollected);
             }
         });
     }
@@ -144,21 +143,9 @@ public class ListAllStudentsStored extends AppCompatActivity {
         configureAdapter();
     }
 
-    /*private void setupLongClickListener() {
-        lvStudents.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                studentDAO.removeStudent(position);
-                updateAllStudents();
-                configureAdapter();
-                return true;
-            }
-        });
-    }
-*/
-    private void startActitvityToUpdateStudent(int position, Student studentColected) {
+    private void startActitvityToUpdateStudent(int position, Student studentCollected) {
         Intent intent = new Intent(ListAllStudentsStored.this, StoreNewStudent.class);
-        intent.putExtra(TAG_INTENT_DATA, studentColected);
+        intent.putExtra(TAG_INTENT_DATA, studentCollected);
         intent.putExtra(POSITION_TO_UPDATE,position);
         startActivity(intent);
     }
