@@ -56,15 +56,4 @@
             </RadioButton>
         </RadioGroup>
 
-
-
-        <Button
-            android:id="@+id/activity_cadastrar_aluno_btn_salvar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Salvar"
-            android:textAlignment="center">
-        </Button>
-
     </LinearLayout>

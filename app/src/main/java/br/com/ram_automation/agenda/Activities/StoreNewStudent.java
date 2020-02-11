@@ -2,12 +2,14 @@ package br.com.ram_automation.agenda.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.ram_automation.agenda.DAO.StudentDAO;
@@ -24,7 +26,6 @@ public class StoreNewStudent extends AppCompatActivity {
     private RadioGroup radioGroup;
     private RadioButton radioButtonMasc;
     private RadioButton radioButtonFem;
-    private Button btnStoreStudent;
 
     public static final String TAG_INTENT_DATA = "DadosAluno";
     public static final String POSITION_TO_UPDATE = "position";
@@ -51,6 +52,24 @@ public class StoreNewStudent extends AppCompatActivity {
         behaviorActivity();
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_store_new_student_menu,menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()== R.id.activity_store_new_student_menu_save){
+            if (studentCollected == null) {
+                storeNewStudent();
+            }else {
+                updateDataFromStudentCollected();
+            }
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     private void initializeVariables() {
         _intent = getIntent();
         etNameStudent = findViewById(R.id.activity_cadastrar_aluno_nome);
@@ -60,7 +79,6 @@ public class StoreNewStudent extends AppCompatActivity {
         radioGroup = findViewById(R.id.activity_cadastrar_aluno_radioGroup);
         radioButtonMasc = findViewById(R.id.activity_cadastrar_aluno_gen_masc);
         radioButtonFem = findViewById(R.id.activity_cadastrar_aluno_gen_fem);
-        btnStoreStudent = findViewById(R.id.activity_cadastrar_aluno_btn_salvar);
 
         _genderStudent = true;
     }
@@ -82,21 +100,6 @@ public class StoreNewStudent extends AppCompatActivity {
                 defineGender(radioGroup);
             }
         });
-
-        btnStoreStudent.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (studentCollected == null) {
-                    Student student = createNewStudent();
-                    storeStudent(student);
-                }else {
-                    updateDataOfCollectedStudent();
-                    updateStudent(studentCollected);
-                }
-            }
-        });
-
 
     }
 
@@ -130,11 +133,6 @@ public class StoreNewStudent extends AppCompatActivity {
         finish();
     }
 
-    private void storeStudent(Student student) {
-        studentDAO.saveStudent(student);
-        finish();
-    }
-
     private Student createNewStudent() {
         _nameStudent = etNameStudent.getText().toString();
         _telephoneStudent = etTelephoneStudent.getText().toString();
@@ -152,6 +150,17 @@ public class StoreNewStudent extends AppCompatActivity {
                 _genderStudent = false;
                 break;
         }
+    }
+
+    private void storeNewStudent() {
+        Student student = createNewStudent();
+        studentDAO.saveStudent(student);
+        finish();
+    }
+
+    private void updateDataFromStudentCollected() {
+        updateDataOfCollectedStudent();
+        updateStudent(studentCollected);
     }
 
 
