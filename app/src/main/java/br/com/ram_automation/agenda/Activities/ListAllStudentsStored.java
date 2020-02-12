@@ -72,7 +72,6 @@ public class ListAllStudentsStored extends AppCompatActivity {
         floatingActionButton = findViewById(R.id.activity_lista_alunos_cadastrados_fab_cadastro);
 
         studentDAO = new StudentDAO();
-        generateDefaultStudents();
         listStudents = studentDAO.getAllStudents();
         configureAdapter();
 
@@ -82,25 +81,6 @@ public class ListAllStudentsStored extends AppCompatActivity {
     private void behaviorActivity() {
         configureFABRegisterNewStudent();
         defineListOfStudents();
-    }
-
-    private void generateDefaultStudents() {
-        studentDAO.saveStudent(new Student("Rafael Alves Marcelino",
-                "(11)985264091",
-                "rafael.alvesmarcelino@gmail.com",
-                true));
-        studentDAO.saveStudent(new Student("Carmelina Alves Marcelino",
-                "(11)991764568",
-                "alves.carmelina@gmail.com",
-                false));
-        studentDAO.saveStudent(new Student("Helio Santiago Marcelino",
-                "(11)39695321",
-                "helio.santiagomarcelino@gmail.com",
-                true));
-        studentDAO.saveStudent(new Student(" Micaelle Marcelino",
-                "(11)44536135",
-                "carmem.micaelle@gmail.com",
-                false));
     }
 
     private void configureAdapter() {
