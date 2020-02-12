@@ -10,6 +10,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.ram_automation.agenda.Model.Student;
@@ -24,8 +25,8 @@ public class CustomBaseAdapter extends BaseAdapter {
     private final List <Student> totalStudents;
     private final Context context;
 
-    public CustomBaseAdapter(List<Student> students, Context context) {
-        this.totalStudents = students;
+    public CustomBaseAdapter(Context context) {
+        this.totalStudents = new ArrayList<>();
         this.context = context;
     }
 
@@ -54,6 +55,12 @@ public class CustomBaseAdapter extends BaseAdapter {
         return inflate;
     }
 
+    public void updateStudents(List<Student> students){
+        this.totalStudents.clear();
+        this.totalStudents.addAll(students);
+        notifyDataSetChanged();
+    }
+
     @SuppressLint("ResourceAsColor")
     private void fillFieldsOfView(View inflate, int position) {
         ImageView imageView = inflate.findViewById(R.id.lv_image);
@@ -76,5 +83,6 @@ public class CustomBaseAdapter extends BaseAdapter {
         textViewTelefone.setText(student.getTelephoneStudent());
         textViewEmail.setText(student.getEmailStudent());
     }
+
 
 }

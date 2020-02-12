@@ -26,10 +26,8 @@ public class StudentDAO {
         }
     }
 
-    public void removeStudent(int position){
-        if(position >= 0) {
-            students.remove(position);
-        }
+    public void removeStudent(Student student){
+        students.remove(student);
     }
 
     public List<Student> getAllStudents() {

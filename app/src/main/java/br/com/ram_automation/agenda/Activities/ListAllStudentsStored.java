@@ -57,10 +57,11 @@ public class ListAllStudentsStored extends AppCompatActivity {
 
     @Override
     public boolean onContextItemSelected(@NonNull MenuItem item) {
-        //Check which menu was pressed
         if (item.getItemId() == R.id.activity_list_all_students_menu_remove){
             AdapterView.AdapterContextMenuInfo menuInfo = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-            removeStudent(menuInfo.position);
+            Student studentToRemove = listStudents.get(menuInfo.position);
+            studentDAO.removeStudent(studentToRemove);
+            updateAllStudents();
         }
 
         return super.onContextItemSelected(item);
@@ -81,7 +82,6 @@ public class ListAllStudentsStored extends AppCompatActivity {
     private void behaviorActivity() {
         configureFABRegisterNewStudent();
         defineListOfStudents();
-        configureAdapter();
     }
 
     private void generateDefaultStudents() {
@@ -104,8 +104,10 @@ public class ListAllStudentsStored extends AppCompatActivity {
     }
 
     private void configureAdapter() {
-        customBaseAdapter = new CustomBaseAdapter(listStudents, this);
+        customBaseAdapter = new CustomBaseAdapter(this);
+        customBaseAdapter.updateStudents(listStudents);
         lvStudents.setAdapter(customBaseAdapter);
+
     }
 
     private void configureFABRegisterNewStudent() {
@@ -120,11 +122,11 @@ public class ListAllStudentsStored extends AppCompatActivity {
     private void defineListOfStudents() {
         updateAllStudents();
         setupClickListener();
-        //setupLongClickListener();
     }
 
     private void updateAllStudents() {
         listStudents = studentDAO.getAllStudents();
+        customBaseAdapter.updateStudents(listStudents);
     }
 
     private void setupClickListener() {
@@ -135,12 +137,6 @@ public class ListAllStudentsStored extends AppCompatActivity {
                 startActitvityToUpdateStudent(position, studentCollected);
             }
         });
-    }
-
-    private void removeStudent(int position) {
-        studentDAO.removeStudent(position);
-        updateAllStudents();
-        configureAdapter();
     }
 
     private void startActitvityToUpdateStudent(int position, Student studentCollected) {
