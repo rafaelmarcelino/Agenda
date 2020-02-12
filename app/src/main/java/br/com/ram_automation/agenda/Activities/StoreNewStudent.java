@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -27,8 +26,8 @@ public class StoreNewStudent extends AppCompatActivity {
     private RadioButton radioButtonMasc;
     private RadioButton radioButtonFem;
 
-    public static final String TAG_INTENT_DATA = "DadosAluno";
-    public static final String POSITION_TO_UPDATE = "position";
+    private static final String TAG_INTENT_DATA = "DadosAluno";
+    private static final String POSITION_TO_UPDATE = "position";
     private final StudentDAO studentDAO = new StudentDAO();
 
     private Student studentCollected;

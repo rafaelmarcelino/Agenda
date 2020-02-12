@@ -10,27 +10,30 @@
 
         <EditText
             android:id="@+id/activity_cadastrar_aluno_nome"
-            android:hint="Nome do student"
+            android:hint="@string/name_student"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textCapWords">
+            android:inputType="textCapWords"
+            android:importantForAutofill="no">
         </EditText>
         <EditText
             android:id="@+id/activity_cadastrar_aluno_telefone"
-            android:hint="Telefone do student"
+            android:hint="@string/telephone_student"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="phone">
+            android:inputType="phone"
+            android:importantForAutofill="no">
         </EditText>
         <EditText
             android:id="@+id/activity_cadastrar_aluno_email"
-            android:hint="Email do student"
+            android:hint="@string/email_student"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress">
+            android:inputType="textEmailAddress"
+            android:importantForAutofill="no">
         </EditText>
 
         <RadioGroup
@@ -45,14 +48,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
-                android:text="Masculino">
+                android:text="@string/gender_masc">
             </RadioButton>
             <RadioButton
                 android:id="@+id/activity_cadastrar_aluno_gen_fem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="50dp"
-                android:text="Feminino">
+                android:layout_marginStart="50dp"
+                android:text="@string/gender_fem">
             </RadioButton>
         </RadioGroup>
 

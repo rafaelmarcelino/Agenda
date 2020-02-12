@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Agenda</string>
+    <string name="name_student">Name of student</string>
+    <string name="telephone_student">Telephone of student</string>
+    <string name="email_student">E-mail of student</string>
+    <string name="gender_masc">Masculine</string>
+    <string name="gender_fem">Feminine</string>
+    <string name="content_desc_cell">picture of student</string>
+    <string name="menu_remove">Remove</string>
+    <string name="menu_update">Update</string>
+    <string name="options_menu_save">Save</string>
 </resources>

@@ -7,7 +7,7 @@ import br.com.ram_automation.agenda.Model.Student;
 
 public class StudentDAO {
     private static final  List<Student> students = new ArrayList<>();
-    private static Long idIncrement = Long.valueOf(0);
+    private static Long idIncrement = 0L;
 
     public void saveStudent(Student student) {
         student.setId(idIncrement);
