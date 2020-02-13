@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<lint>
+    <issue id="IconXmlAndPng">
+        <ignore path="src/main/res/drawable-hdpi/ic_action_menu_save.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_action_new_student.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_action_new_student.png" />
+        <ignore path="src/main/res/drawable-hdpi/ic_man.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_action_menu_save.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_action_new_student.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_man.png" />
+        <ignore path="src/main/res/drawable-mdpi/ic_woman.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_action_menu_save.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_action_new_student.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_action_new_student.png" />
+        <ignore path="src/main/res/drawable-xhdpi/ic_man.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_action_menu_save.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_action_new_student.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_man.png" />
+        <ignore path="src/main/res/drawable-xxhdpi/ic_woman.png" />
+    </issue>
+</lint>

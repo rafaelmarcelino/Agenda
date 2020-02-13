@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.com.ram_automation.agenda">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="br.com.ram_automation.agenda"
+    tools:ignore="GoogleAppIndexingWarning">
 
     <application
         android:allowBackup="true"
@@ -11,14 +13,16 @@
         android:theme="@style/AppTheme"
         android:name=".AgendaApplication"
         android:fullBackupContent="@xml/backup_descriptor">
-        <activity android:name=".Activities.ListAllStudentsStored">
+        <activity android:name=".Activities.ListAllStudentsStored"
+            tools:ignore="InnerclassSeparator">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.StoreNewStudent"/>
+        <activity android:name=".Activities.StoreNewStudent"
+            tools:ignore="InnerclassSeparator" />
     </application>
 
 </manifest>

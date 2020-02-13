@@ -5,6 +5,7 @@ import android.app.Application;
 import br.com.ram_automation.agenda.DAO.StudentDAO;
 import br.com.ram_automation.agenda.Model.Student;
 
+@SuppressWarnings("WeakerAccess")
 public class AgendaApplication extends Application {
     private StudentDAO studentDAO;
     @Override

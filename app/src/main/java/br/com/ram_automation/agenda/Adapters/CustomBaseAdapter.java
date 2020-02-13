@@ -48,7 +48,7 @@ public class CustomBaseAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Activity activity = (Activity) context;
-        View inflate = activity.getLayoutInflater().inflate(R.layout.list_view_celula, parent,false);
+        @SuppressLint("ViewHolder") View inflate = activity.getLayoutInflater().inflate(R.layout.list_view_celula, parent,false);
 
         fillFieldsOfView(inflate,position);
 
